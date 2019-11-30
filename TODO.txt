@@ -1,0 +1,5 @@
+1) Needs to be able to read/write to CSV.
+2) Needs to back up the CSV each time a change is made.
+3) Prints out text list ordered by isle.
+4) CSV columns: Item, Aisle.
+5) Prompts user for each item.
