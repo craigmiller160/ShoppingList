@@ -5,6 +5,7 @@ commander
 	.option('-a, --add', 'Add an item to the shopping list')
 	.option('-r, --remove', 'Remove an item to the shopping list')
 	.option('-p, --print', 'Print the shopping list')
+	.option('-v, --view', 'View the shopping list')
 	.parse(process.argv);
 
 if (commander.add) {
@@ -15,6 +16,9 @@ else if (commander.remove) {
 } 
 else if (commander.print) {
 	throw new Error('Printing not implemented yet');
+}
+else if (commander.view) {
+	throw new Error('Viewing not implemented yet');
 }
 else {
 	throw new Error('Invalid arguments.');
