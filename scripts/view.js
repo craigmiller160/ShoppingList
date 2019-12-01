@@ -1,7 +1,7 @@
-const formatData = require('./format');
+const { prettyFormatList } = require('./format');
 
 const viewData = () => {
-	const formattedData = formatData();
+	const formattedData = prettyFormatList();
 	console.log(formattedData);
 };
 

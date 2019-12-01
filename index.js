@@ -1,6 +1,7 @@
 const commander = require('commander');
 const addItem = require('./scripts/add');
 const viewData = require('./scripts/view');
+const removeItem = require('./scripts/remove');
 
 commander
 	.option('-a, --add', 'Add an item to the shopping list')
@@ -13,7 +14,7 @@ if (commander.add) {
 	addItem();
 }
 else if (commander.remove) {
-	throw new Error('Removing not implemented yet');
+	removeItem();
 } 
 else if (commander.print) {
 	throw new Error('Printing not implemented yet');

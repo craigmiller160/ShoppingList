@@ -1,8 +1,7 @@
 const { readData } = require('./io');
+const leadingZeroes = require('leading-zeroes').default;
 
-const formatData = () => {
-	let formatted = 'Shopping List\n\n';
-
+const organizeByAisle = () => {
 	const data = readData();
 	const itemsByAisle = data.items.reduce((acc, item) => {
 		if (acc[item.aisle]) {
@@ -15,6 +14,13 @@ const formatData = () => {
 		return acc;
 	}, {});
 
+	return itemsByAisle;
+};
+
+const prettyFormatList = () => {
+	let formatted = 'Shopping List\n\n';
+
+	const itemsByAisle = organizeByAisle();
 	Object.entries(itemsByAisle)
 		.forEach(([aisle, itemArray]) => {
 			formatted += `Aisle: ${aisle}\n`;
@@ -27,4 +33,26 @@ const formatData = () => {
 	return formatted;
 };
 
-module.exports = formatData;
+const formatItemsByIndex = () => {
+	let formatted = 'Items By Index\n\n';
+
+	const data = readData();
+	return data.items
+		.sort((item1, item2) => {
+			const result = item1.aisle.localeCompare(item2.aisle);
+			if (result === 0) {
+				return item1.name.localeCompare(item2.name);
+			}
+			return result;
+		})
+		.map((item) => {
+			const id = leadingZeroes(item.id, 3);
+			return `[${id}] (${item.aisle}) ${item.name}`;
+		})
+		.join('\n');
+};
+
+module.exports = {
+	prettyFormatList,
+	formatItemsByIndex
+};
