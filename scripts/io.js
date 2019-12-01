@@ -4,6 +4,7 @@ const moment = require('moment');
 const readline = require('readline');
 
 const DATA_FILE_PATH = path.resolve(require.main.path, './data/list.json');
+const OUTPUT_PATH = path.resolve(require.main.path, 'ShoppingList.txt');
 
 const DEFAULT_DATA = {
 	index: 0,
@@ -45,8 +46,14 @@ const openReadline = () => {
 	return rl;
 };
 
+const writeShoppingList = (list) => {
+	fs.writeFileSync(OUTPUT_PATH, list, 'utf8');
+	console.log(`List printed to: ${OUTPUT_PATH}`);
+};
+
 module.exports = {
 	readData,
 	writeData,
-	openReadline
+	openReadline,
+	writeShoppingList
 };
