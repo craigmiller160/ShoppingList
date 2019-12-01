@@ -1,4 +1,5 @@
 const commander = require('commander');
+const addItem = require('./scripts/add');
 
 commander
 	.option('-a, --add', 'Add an item to the shopping list')
@@ -7,7 +8,7 @@ commander
 	.parse(process.argv);
 
 if (commander.add) {
-	throw new Error('Adding not implemented yet');
+	addItem();
 }
 else if (commander.remove) {
 	throw new Error('Removing not implemented yet');
