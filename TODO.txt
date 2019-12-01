@@ -1,5 +1,0 @@
-1) Needs to be able to read/write to JSON.
-2) Needs to back up the JSON each time a change is made.
-3) Prints out text list ordered by isle.
-4) JSON fields: Item, Isle
-5) Add a new item: Prompt user for each field.

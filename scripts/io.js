@@ -4,6 +4,7 @@ const moment = require('moment');
 const readline = require('readline');
 
 const DATA_FILE_PATH = path.resolve(require.main.path, './data/list.json');
+const DEV_DATA_FILE_PATH = path.resolve(require.main.path, './data/dev-list.json');
 const OUTPUT_PATH = path.resolve(require.main.path, 'ShoppingList.txt');
 
 const DEFAULT_DATA = {
@@ -11,26 +12,28 @@ const DEFAULT_DATA = {
 	items: []
 };
 
+const dataFilePath = process.env.PROD ? DATA_FILE_PATH : DEV_DATA_FILE_PATH;
+
 const createBackupFilePath = () => {
 	const timestamp = moment().format('YYYYMMDDHHmmss');
 	return path.resolve(require.main.path, `./backup/list.${timestamp}.json`);
 }
 
 const readData = () => {
-	if (fs.existsSync(DATA_FILE_PATH)) {
-		const dataJson = fs.readFileSync(DATA_FILE_PATH, 'utf8');
+	if (fs.existsSync(dataFilePath)) {
+		const dataJson = fs.readFileSync(dataFilePath, 'utf8');
 		return JSON.parse(dataJson);
 	}
 	return DEFAULT_DATA;
 };
 
 const writeData = (data) => {
-	if (fs.existsSync(DATA_FILE_PATH)) {
+	if (fs.existsSync(dataFilePath) && process.env.PROD) {
 		const backupFilePath = createBackupFilePath();
-		fs.copyFileSync(DATA_FILE_PATH, backupFilePath);
+		fs.copyFileSync(dataFilePath, backupFilePath);
 	}
 
-	fs.writeFileSync(DATA_FILE_PATH, JSON.stringify(data, null, 2), 'utf8');
+	fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2), 'utf8');
 };
 
 const openReadline = () => {
