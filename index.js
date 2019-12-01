@@ -1,5 +1,6 @@
 const commander = require('commander');
 const addItem = require('./scripts/add');
+const viewData = require('./scripts/view');
 
 commander
 	.option('-a, --add', 'Add an item to the shopping list')
@@ -18,7 +19,7 @@ else if (commander.print) {
 	throw new Error('Printing not implemented yet');
 }
 else if (commander.view) {
-	throw new Error('Viewing not implemented yet');
+	viewData();
 }
 else {
 	throw new Error('Invalid arguments.');
