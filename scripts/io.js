@@ -2,11 +2,11 @@ const fs = require('fs');
 const path = require('path');
 const moment = require('moment');
 
-const DATA_FILE_PATH = path.resolve(__dirname, './data/list.json');
+const DATA_FILE_PATH = path.resolve(require.main.path, './data/list.json');
 
 const createBackupFilePath = () => {
 	const timestamp = moment().format('YYYYMMDDHHmmss');
-	return path.resolve(__dirname, `./backup/list.${timestamp}.json`);
+	return path.resolve(require.main.path, `./backup/list.${timestamp}.json`);
 }
 
 const readData = () => {
