@@ -24,9 +24,10 @@ const prettyFormatList = () => {
 	Object.entries(itemsByAisle)
 		.forEach(([aisle, itemArray]) => {
 			formatted += `Aisle: ${aisle}\n`;
-			itemArray.forEach((item) => {
-				formatted += `  [ ] ${item}\n`;
-			});
+			itemArray.sort((item1, item2) => item1.localeCompare(item2))
+				.forEach((item) => {
+					formatted += `  [ ] ${item}\n`;
+				});
 			formatted += '\n';
 		});
 
