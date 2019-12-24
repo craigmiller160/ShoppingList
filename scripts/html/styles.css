@@ -1,7 +1,4 @@
-<html>
-    <head>
-        <style>
-            body {
+body {
 	width: 80%;
 	margin: 0 auto;
 	font-family: sans-serif;
@@ -47,18 +44,3 @@
 	height: 1rem;
 	display: inline-block;
 }
-        </style>
-        <title>
-            Shopping List
-        </title>
-    </head>
-    <body>
-        <header>
-            <div class="title">
-                <h1>
-                    Shopping List
-                </h1>
-            </div>
-        </header>
-    </body>
-</html>
