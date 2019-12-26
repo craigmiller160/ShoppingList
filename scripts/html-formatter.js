@@ -1,8 +1,7 @@
 const { JSDOM } = require('jsdom');
 const { HtmlBuilder } = require('./html/builder');
-const { readData } = require('./io'); // TODO maybe remove this
-const fs = require('fs'); // TODO delete this
-const path = require('path'); // TODO delete this
+const fs = require('fs');
+const path = require('path');
 
 const organizeData = (data) => {
 	const aisleMap = data.items
