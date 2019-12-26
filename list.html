@@ -1,7 +1,11 @@
 <html>
     <head>
         <style>
-            body {
+            * {
+	box-sizing: border-box;
+}
+
+body {
 	width: 80%;
 	margin: 0 auto;
 	font-family: sans-serif;
@@ -16,7 +20,7 @@
 .col {
 	display: flex;
 	flex-direction: column;
-	margin: 0;
+	margin: 0.5rem;
 	flex: 1;
 	align-items: center; /* TODO work on an alignment that still left-aligns items */
 }
@@ -30,6 +34,8 @@
 .list {
 	border: 1px solid lightgray;
 	padding: 2rem;
+	width: 100%;
+	height: 100%;
 }
 
 .list > .list__header {
@@ -170,6 +176,8 @@
                             Chicken
                         </p>
                     </div>
+                </div>
+                <div class="col">
                 </div>
             </div>
         </main>

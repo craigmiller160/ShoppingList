@@ -99,10 +99,14 @@ const buildMain = (htmlBuilder, data) => {
 					});
 				});
 
-			console.log(row); // TODO delete this
+			if (Object.keys(row).length === 1) {
+				const colElem = htmlBuilder.createElement({
+					tagName: 'div',
+					className: 'col'
+				});
+				rowElem.appendChild(colElem);
+			}
 		});
-
-	// console.log(data); // TODO delete this
 };
 
 const formatDataHtml = () => {
