@@ -4,22 +4,37 @@ const { readData } = require('./io'); // TODO maybe remove this
 const fs = require('fs'); // TODO delete this
 const path = require('path'); // TODO delete this
 
-const formatDataHtml = () => {
-	const data = readData(); // TODO remove this
+const organizeData = (data) => {
+	const aisleMap = data.items
+		.reduce((acc, item) => {
+			if (acc[item.aisle]) {
+				acc[item.aisle].push(item);
+			} else {
+				acc[item.aisle] = [item];
+			}
+			return acc;
+		}, {});
+	return Object.entries(aisleMap)
+		.reduce((acc, [aisle, items]) => {
+			const values = Object.values(acc);
+			if (values.length === 0) {
+				acc.row1 = {
+					[aisle]: items
+				};
+			} else if (Object.keys(values[values.length - 1]).length < 2) {
+				values[values.length - 1][aisle] = items;
+			} else {
+				acc[`row${values.length + 1}`] = {
+					[aisle]: items
+				};
+			}
+			return acc;
+		}, {});
+};
 
-	const css = fs.readFileSync(path.resolve(require.main.path, 'scripts/html/styles.css'), 'utf8');
-
-	const htmlBuilder = new HtmlBuilder();
-	htmlBuilder.addCss(css);
-
-	const titleElem = htmlBuilder.createElement({
-		tagName: 'title',
-		textContent: 'Shopping List'
-	});
-	htmlBuilder.document.head.appendChild(titleElem);
-
+const buildHeader = (htmlBuilder) => {
 	const headerElem = htmlBuilder.createElement({ tagName: 'header' });
-	htmlBuilder.document.body.appendChild(headerElem);
+	htmlBuilder.appendElement('body', headerElem);
 
 	const headerTitleDiv = htmlBuilder.createElement({
 		tagName: 'div',
@@ -32,6 +47,47 @@ const formatDataHtml = () => {
 		textContent: 'Shopping List'
 	});
 	headerTitleDiv.appendChild(titleH1);
+};
+
+const buildMain = (htmlBuilder, data) => {
+	const mainElem = htmlBuilder.createElement({ tagName: 'main' });
+	htmlBuilder.appendElement('body', mainElem);
+
+	Object.values(data)
+		.forEach((row) => {
+			const rowElem = htmlBuilder.createElement({
+				tagName: 'div',
+				className: 'row'
+			});
+			mainElem.appendChild(rowElem);
+
+			Object.entries(row)
+				.forEach(([aisle, items]) => {
+					const colElem = htmlBuilder.createElement({
+						tagName: 'div',
+						className: 'col'
+					});
+					rowElem.appendChild(colElem);
+				});
+
+			console.log(row); // TODO delete this
+		});
+
+	// console.log(data); // TODO delete this
+};
+
+const formatDataHtml = () => {
+	const data = readData(); // TODO remove this
+	const organizedData = organizeData(data);
+
+	const css = fs.readFileSync(path.resolve(require.main.path, 'scripts/html/styles.css'), 'utf8');
+
+	const htmlBuilder = new HtmlBuilder();
+	htmlBuilder.setCss(css);
+	htmlBuilder.setTitle('Shopping List');
+
+	buildHeader(htmlBuilder);
+	buildMain(htmlBuilder, organizedData);
 
 	const formatted = htmlBuilder.serialize();
 	fs.writeFileSync(path.resolve(require.main.path, 'list.html'), formatted, 'utf8'); // TODO I don't want to write this here
