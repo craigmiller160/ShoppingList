@@ -1,4 +1,5 @@
 const { readData, writeData, openReadline } = require('./io');
+const print = require('./print');
 
 const addItem = async () => {
 	const data = readData();
@@ -24,6 +25,7 @@ const addItem = async () => {
 
 	writeData(data);
 	console.log(`Successfully added ${name} in aisle ${aisle}`);
+	print();
 };
 
 module.exports = addItem;

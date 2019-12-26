@@ -2,6 +2,8 @@ const { readData, writeData, openReadline } = require('./io');
 const { formatItemsByIndex } = require('./format');
 
 const removeItem = async () => {
+	throw new Error('Refactor this to work with new HTML view'); // TODO delete this
+
 	console.log(formatItemsByIndex());
 	console.log('\n');
 
@@ -24,6 +26,8 @@ const removeItem = async () => {
 
 	data.items.splice(index, 1);
 	writeData(data);
+
+	// TODO at the very end, print a new HTML page
 };
 
 module.exports = removeItem;

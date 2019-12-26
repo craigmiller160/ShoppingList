@@ -51,6 +51,7 @@ const openReadline = () => {
 
 const writeShoppingList = (html) => {
 	fs.writeFileSync(OUTPUT_PATH, html, 'utf8');
+	console.log(`Shopping List written to: ${OUTPUT_PATH}`);
 };
 
 module.exports = {

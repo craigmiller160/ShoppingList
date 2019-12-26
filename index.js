@@ -2,7 +2,7 @@ const commander = require('commander');
 const addItem = require('./scripts/add');
 const viewData = require('./scripts/view');
 const removeItem = require('./scripts/remove');
-const printItem = require('./scripts/print');
+const print = require('./scripts/print');
 const formatHtml = require('./scripts/html-formatter'); // TODO remove this
 
 commander
@@ -20,7 +20,7 @@ else if (commander.remove) {
 	removeItem();
 } 
 else if (commander.print) {
-	printItem();
+	print();
 }
 else if (commander.view) {
 	viewData();
