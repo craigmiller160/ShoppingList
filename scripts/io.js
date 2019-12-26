@@ -60,5 +60,9 @@ module.exports = {
 	readData,
 	writeData,
 	openReadline,
-	writeShoppingList
+	writeShoppingList,
+	paths: {
+		dataFilePath,
+		outputFilePath
+	}
 };
