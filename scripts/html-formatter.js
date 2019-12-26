@@ -68,6 +68,35 @@ const buildMain = (htmlBuilder, data) => {
 						className: 'col'
 					});
 					rowElem.appendChild(colElem);
+
+					const listElem = htmlBuilder.createElement({
+						tagName: 'div',
+						className: 'list'
+					});
+					colElem.appendChild(listElem);
+
+					const listHeader = htmlBuilder.createElement({
+						tagName: 'h2',
+						className: 'list__header',
+						textContent: `Aisle: ${aisle}`
+					});
+					listElem.appendChild(listHeader);
+
+					items.forEach((item) => {
+						const itemElem = htmlBuilder.createElement({
+							tagName: 'p',
+							className: 'list__item'
+						});
+						const box = htmlBuilder.createElement({
+							tagName: 'span',
+							className: 'list__box'
+						});
+						const text = htmlBuilder.createTextNode(item.name);
+
+						itemElem.appendChild(box);
+						itemElem.appendChild(text);
+						listElem.appendChild(itemElem);
+					});
 				});
 
 			console.log(row); // TODO delete this

@@ -48,6 +48,10 @@ class HtmlBuilder {
 		return elem;
 	}
 
+	createTextNode(text) {
+		return this.document.createTextNode(text);
+	}
+
 	appendElement(parentSelector, element) {
 		this.document.querySelector(parentSelector).appendChild(element);
 	}
