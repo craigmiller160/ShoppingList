@@ -3,6 +3,8 @@ const { HtmlBuilder } = require('./html/builder');
 const fs = require('fs');
 const path = require('path');
 
+const title = process.env.PROD ? 'Shopping List' : 'Dev Shopping List';
+
 const organizeData = (data) => {
 	const aisleMap = data.items
 		.reduce((acc, item) => {
@@ -115,7 +117,7 @@ const formatDataHtml = (data) => {
 
 	const htmlBuilder = new HtmlBuilder();
 	htmlBuilder.setCss(css);
-	htmlBuilder.setTitle('Shopping List');
+	htmlBuilder.setTitle(title);
 
 	buildHeader(htmlBuilder);
 	buildMain(htmlBuilder, organizedData);
