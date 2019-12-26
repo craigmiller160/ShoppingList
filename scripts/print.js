@@ -1,11 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-const { prettyFormatList } = require('./format');
-const { writeShoppingList } = require('./io');
+const { readData, writeShoppingList } = require('./io');
+const formatHtml = require('./html-formatter');
 
-const printList = () => {
-	const formatted = prettyFormatList();
+const print = () => {
+	const data = readData();
+	const formatted = formatHtml(data);
 	writeShoppingList(formatted);
 };
 
-module.exports = printList;
+module.exports = print;

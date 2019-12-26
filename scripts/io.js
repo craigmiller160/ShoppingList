@@ -5,7 +5,7 @@ const readline = require('readline');
 
 const DATA_FILE_PATH = path.resolve(require.main.path, './data/list.json');
 const DEV_DATA_FILE_PATH = path.resolve(require.main.path, './data/dev-list.json');
-const OUTPUT_PATH = path.resolve(require.main.path, 'ShoppingList.txt');
+const OUTPUT_PATH = path.resolve(require.main.path, 'ShoppingList.html');
 
 const DEFAULT_DATA = {
 	index: 0,
@@ -49,9 +49,8 @@ const openReadline = () => {
 	return rl;
 };
 
-const writeShoppingList = (list) => {
-	fs.writeFileSync(OUTPUT_PATH, list, 'utf8');
-	console.log(`List printed to: ${OUTPUT_PATH}`);
+const writeShoppingList = (html) => {
+	fs.writeFileSync(OUTPUT_PATH, html, 'utf8');
 };
 
 module.exports = {

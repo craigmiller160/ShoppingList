@@ -109,8 +109,7 @@ const buildMain = (htmlBuilder, data) => {
 		});
 };
 
-const formatDataHtml = () => {
-	const data = readData(); // TODO remove this
+const formatDataHtml = (data) => {
 	const organizedData = organizeData(data);
 
 	const css = fs.readFileSync(path.resolve(require.main.path, 'scripts/html/styles.css'), 'utf8');
@@ -122,8 +121,7 @@ const formatDataHtml = () => {
 	buildHeader(htmlBuilder);
 	buildMain(htmlBuilder, organizedData);
 
-	const formatted = htmlBuilder.serialize();
-	fs.writeFileSync(path.resolve(require.main.path, 'list.html'), formatted, 'utf8'); // TODO I don't want to write this here
+	return htmlBuilder.serialize();
 };
 
 module.exports = formatDataHtml;
