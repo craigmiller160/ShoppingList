@@ -25,7 +25,7 @@ const addItem = async () => {
 
 	writeData(data);
 	console.log(`Successfully added ${name} in aisle ${aisle}`);
-	print();
+	print(data);
 };
 
 module.exports = addItem;
