@@ -45,9 +45,62 @@ const buildHeader = (htmlBuilder) => {
 
 	const titleH1 = htmlBuilder.createElement({
 		tagName: 'h1',
-		textContent: 'Shopping List'
+		textContent: title
 	});
 	headerTitleDiv.appendChild(titleH1);
+};
+
+const buildItem = (htmlBuilder, item, listElem) => {
+	const itemElem = htmlBuilder.createElement({
+		tagName: 'p',
+		className: 'list__item'
+	});
+	const box = htmlBuilder.createElement({
+		tagName: 'span',
+		className: 'list__box'
+	});
+	const text = htmlBuilder.createTextNode(item.name);
+	const tooltip = htmlBuilder.createElement({
+		tagName: 'span',
+		className: 'list__tooltip',
+		textContent: `ID: ${item.id}`
+	});
+
+	itemElem.appendChild(box);
+	itemElem.appendChild(text);
+	itemElem.appendChild(tooltip);
+	listElem.appendChild(itemElem);
+};
+
+
+// <p class="list__item">
+//                             <span class="list__box">
+//                             </span>
+//                             Pasta
+//                             <span class="list__tooltip">This is tooltip</span>
+//                         </p>
+
+const buildRow = (htmlBuilder, aisle, items, rowElem) => {
+	const colElem = htmlBuilder.createElement({
+		tagName: 'div',
+		className: 'col'
+	});
+	rowElem.appendChild(colElem);
+
+	const listElem = htmlBuilder.createElement({
+		tagName: 'div',
+		className: 'list'
+	});
+	colElem.appendChild(listElem);
+
+	const listHeader = htmlBuilder.createElement({
+		tagName: 'h2',
+		className: 'list__header',
+		textContent: `Aisle: ${aisle}`
+	});
+	listElem.appendChild(listHeader);
+
+	items.forEach((item) => buildItem(htmlBuilder, item, listElem));
 };
 
 const buildMain = (htmlBuilder, data) => {
@@ -63,42 +116,7 @@ const buildMain = (htmlBuilder, data) => {
 			mainElem.appendChild(rowElem);
 
 			Object.entries(row)
-				.forEach(([aisle, items]) => {
-					const colElem = htmlBuilder.createElement({
-						tagName: 'div',
-						className: 'col'
-					});
-					rowElem.appendChild(colElem);
-
-					const listElem = htmlBuilder.createElement({
-						tagName: 'div',
-						className: 'list'
-					});
-					colElem.appendChild(listElem);
-
-					const listHeader = htmlBuilder.createElement({
-						tagName: 'h2',
-						className: 'list__header',
-						textContent: `Aisle: ${aisle}`
-					});
-					listElem.appendChild(listHeader);
-
-					items.forEach((item) => {
-						const itemElem = htmlBuilder.createElement({
-							tagName: 'p',
-							className: 'list__item'
-						});
-						const box = htmlBuilder.createElement({
-							tagName: 'span',
-							className: 'list__box'
-						});
-						const text = htmlBuilder.createTextNode(item.name);
-
-						itemElem.appendChild(box);
-						itemElem.appendChild(text);
-						listElem.appendChild(itemElem);
-					});
-				});
+				.forEach(([aisle, items]) => buildRow(htmlBuilder, aisle, items, rowElem));
 
 			if (Object.keys(row).length === 1) {
 				const colElem = htmlBuilder.createElement({

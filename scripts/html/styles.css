@@ -50,3 +50,15 @@ body {
 	height: 1rem;
 	display: inline-block;
 }
+
+.list > .list__item > .list__tooltip {
+    visibility: hidden;
+}
+
+.list > .list__item:hover > .list__tooltip {
+    visibility: visible;
+    font-size: 0.75rem;
+    background-color: lightgray;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+}
