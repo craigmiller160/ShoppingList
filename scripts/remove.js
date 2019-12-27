@@ -1,12 +1,7 @@
 const { readData, writeData, openReadline } = require('./io');
-const { formatItemsByIndex } = require('./format');
+const print = require('./print');
 
 const removeItem = async () => {
-	throw new Error('Refactor this to work with new HTML view'); // TODO delete this
-
-	console.log(formatItemsByIndex());
-	console.log('\n');
-
 	let selection;
 
 	const rl = openReadline();
@@ -24,10 +19,11 @@ const removeItem = async () => {
 		throw new Error(`Cannot find item with ID: ${selection}`);
 	}
 
+	const item = data.items[index];
 	data.items.splice(index, 1);
 	writeData(data);
-
-	// TODO at the very end, print a new HTML page
+	console.log(`Successfully removed ${item.name} from aisle ${item.aisle}`);
+	print(data);
 };
 
 module.exports = removeItem;

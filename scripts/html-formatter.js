@@ -5,6 +5,8 @@ const path = require('path');
 
 const title = process.env.PROD ? 'Shopping List' : 'Dev Shopping List';
 
+// TODO sort the data so the aisles are alphabetical
+
 const organizeData = (data) => {
 	const aisleMap = data.items
 		.reduce((acc, item) => {
@@ -71,14 +73,6 @@ const buildItem = (htmlBuilder, item, listElem) => {
 	itemElem.appendChild(tooltip);
 	listElem.appendChild(itemElem);
 };
-
-
-// <p class="list__item">
-//                             <span class="list__box">
-//                             </span>
-//                             Pasta
-//                             <span class="list__tooltip">This is tooltip</span>
-//                         </p>
 
 const buildRow = (htmlBuilder, aisle, items, rowElem) => {
 	const colElem = htmlBuilder.createElement({
