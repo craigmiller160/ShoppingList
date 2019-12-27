@@ -44,11 +44,17 @@ body {
 	font-size: 1.25rem;
 }
 
-.list .list__item > .list__box {
+.list .list__box {
 	border: 1px solid black;
 	width: 1rem;
 	height: 1rem;
 	display: inline-block;
+}
+
+.list .list__box-container {
+    flex-basis: 2rem;
+    margin-right: 1rem;
+    text-align: center;
 }
 
 .list .list__item > .list__tooltip {
@@ -70,9 +76,10 @@ body {
 
 .list > .item__header > .small {
 	flex-basis: 1rem;
-	padding-right: 0.5rem;
+	margin-right: 1rem;
 }
 
 .list > .row__item {
-
+    align-items: center;
+    justify-content: left;
 }

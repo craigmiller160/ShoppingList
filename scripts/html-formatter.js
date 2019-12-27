@@ -59,14 +59,31 @@ const buildItem = (htmlBuilder, item, listElem) => {
 	});
 	listElem.appendChild(rowElem);
 
+	const box1Container = htmlBuilder.createElement({
+		tagName: 'div',
+		className: 'list__box-container'
+	});
+	const box1 = htmlBuilder.createElement({
+		tagName: 'span',
+		className: 'list__box'
+	});
+	box1Container.appendChild(box1);
+
+	const box2Container = htmlBuilder.createElement({
+		tagName: 'div',
+		className: 'list__box-container'
+	});
+	const box2 = htmlBuilder.createElement({
+		tagName: 'span',
+		className: 'list__box'
+	});
+	box2Container.appendChild(box2);
+
 	const itemElem = htmlBuilder.createElement({
 		tagName: 'p',
 		className: 'list__item'
 	});
-	const box = htmlBuilder.createElement({
-		tagName: 'span',
-		className: 'list__box'
-	});
+	
 	const text = htmlBuilder.createTextNode(item.name);
 	const tooltip = htmlBuilder.createElement({
 		tagName: 'span',
@@ -74,7 +91,8 @@ const buildItem = (htmlBuilder, item, listElem) => {
 		textContent: `ID: ${item.id}`
 	});
 
-	itemElem.appendChild(box);
+	rowElem.appendChild(box1Container);
+	rowElem.appendChild(box2Container);
 	itemElem.appendChild(text);
 	itemElem.appendChild(tooltip);
 	rowElem.appendChild(itemElem);
