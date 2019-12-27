@@ -39,26 +39,40 @@ body {
 	text-decoration: underline;
 }
 
-.list > .list__item {
+.list .list__item {
 	margin: 0.5rem;
 	font-size: 1.25rem;
 }
 
-.list > .list__item > .list__box {
+.list .list__item > .list__box {
 	border: 1px solid black;
 	width: 1rem;
 	height: 1rem;
 	display: inline-block;
 }
 
-.list > .list__item > .list__tooltip {
+.list .list__item > .list__tooltip {
     visibility: hidden;
 }
 
-.list > .list__item:hover > .list__tooltip {
+.list .list__item:hover > .list__tooltip {
     visibility: visible;
     font-size: 0.75rem;
     background-color: lightgray;
     padding: 0.25rem;
     border-radius: 0.25rem;
+}
+
+.list > .item__header {
+	font-weight: bold;
+	justify-content: left;
+}
+
+.list > .item__header > .small {
+	flex-basis: 1rem;
+	padding-right: 0.5rem;
+}
+
+.list > .row__item {
+
 }

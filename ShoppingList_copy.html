@@ -1,0 +1,337 @@
+<html>
+    <head>
+        <style>
+            * {
+	box-sizing: border-box;
+}
+
+body {
+	width: 80%;
+	margin: 0 auto;
+	font-family: sans-serif;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.col {
+	display: flex;
+	flex-direction: column;
+	margin: 0.5rem;
+	flex: 1;
+	align-items: center; /* TODO work on an alignment that still left-aligns items */
+}
+
+.title {
+	text-align: center;
+	border-bottom: 1px solid lightgray;
+	margin: 1rem auto;
+}
+
+.list {
+	border: 1px solid lightgray;
+	padding: 2rem;
+	width: 100%;
+	height: 100%;
+}
+
+.list > .list__header {
+	text-decoration: underline;
+}
+
+.list .list__item {
+	margin: 0.5rem;
+	font-size: 1.25rem;
+}
+
+.list .list__box {
+	border: 1px solid black;
+	width: 1rem;
+	height: 1rem;
+	display: inline-block;
+}
+
+.list .list__box-container {
+    flex-basis: 2rem;
+    margin-right: 1rem;
+    text-align: center;
+}
+
+.list .list__item > .list__tooltip {
+    visibility: hidden;
+}
+
+.list .list__item:hover > .list__tooltip {
+    visibility: visible;
+    font-size: 0.75rem;
+    background-color: lightgray;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+}
+
+.list > .item__header {
+	font-weight: bold;
+	justify-content: left;
+}
+
+.list > .item__header > .small {
+	flex-basis: 1rem;
+	margin-right: 1rem;
+}
+
+.list > .row__item {
+    align-items: center;
+    justify-content: left;
+}
+        </style>
+        <title>
+            Shopping List
+        </title>
+    </head>
+    <body>
+        <header>
+            <div class="title">
+                <h1>
+                    Shopping List
+                </h1>
+            </div>
+        </header>
+        <main>
+            <div class="row">
+                <div class="col">
+                    <div class="list">
+                        <h2 class="list__header">
+                            Aisle: 3
+                        </h2>
+                        <div class="row item__header">
+                            <p class="small">
+                                Need
+                            </p>
+                            <p class="small">
+                                Done
+                            </p>
+                            <p>
+                                Item
+                            </p>
+                        </div>
+                        <div class="row row__item">
+                            <div class="list__box-container">
+                                <span class="list__box"></span>
+                            </div>
+                            <div class="list__box-container">
+                                <span class="list__box"></span>
+                            </div>
+                            <p class="list__item">
+                                Pasta
+                                <span class="list__tooltip">
+                                    ID: 12
+                                </span>
+                            </p>
+                        </div>
+                        <div class="row row__item">
+                            <p class="list__item">
+                                <span class="list__box">
+                                </span>
+                                Soup
+                                <span class="list__tooltip">
+                                    ID: 13
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="list">
+                        <h2 class="list__header">
+                            Aisle: 7
+                        </h2>
+                        <div class="row item__header">
+                            <p class="small">
+                                Need
+                            </p>
+                            <p class="small">
+                                Done
+                            </p>
+                            <p>
+                                Item
+                            </p>
+                        </div>
+                        <div class="row row__item">
+                            <p class="list__item">
+                                <span class="list__box">
+                                </span>
+                                Cookies
+                                <span class="list__tooltip">
+                                    ID: 14
+                                </span>
+                            </p>
+                        </div>
+                        <div class="row row__item">
+                            <p class="list__item">
+                                <span class="list__box">
+                                </span>
+                                Crackers
+                                <span class="list__tooltip">
+                                    ID: 15
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="list">
+                        <h2 class="list__header">
+                            Aisle: Pharmacy
+                        </h2>
+                        <div class="row item__header">
+                            <p class="small">
+                                Need
+                            </p>
+                            <p class="small">
+                                Done
+                            </p>
+                            <p>
+                                Item
+                            </p>
+                        </div>
+                        <div class="row row__item">
+                            <p class="list__item">
+                                <span class="list__box">
+                                </span>
+                                Cough Drops
+                                <span class="list__tooltip">
+                                    ID: 5
+                                </span>
+                            </p>
+                        </div>
+                        <div class="row row__item">
+                            <p class="list__item">
+                                <span class="list__box">
+                                </span>
+                                Toothpaste
+                                <span class="list__tooltip">
+                                    ID: 11
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="list">
+                        <h2 class="list__header">
+                            Aisle: Produce
+                        </h2>
+                        <div class="row item__header">
+                            <p class="small">
+                                Need
+                            </p>
+                            <p class="small">
+                                Done
+                            </p>
+                            <p>
+                                Item
+                            </p>
+                        </div>
+                        <div class="row row__item">
+                            <p class="list__item">
+                                <span class="list__box">
+                                </span>
+                                Bananas
+                                <span class="list__tooltip">
+                                    ID: 6
+                                </span>
+                            </p>
+                        </div>
+                        <div class="row row__item">
+                            <p class="list__item">
+                                <span class="list__box">
+                                </span>
+                                Celery
+                                <span class="list__tooltip">
+                                    ID: 7
+                                </span>
+                            </p>
+                        </div>
+                        <div class="row row__item">
+                            <p class="list__item">
+                                <span class="list__box">
+                                </span>
+                                Squash
+                                <span class="list__tooltip">
+                                    ID: 8
+                                </span>
+                            </p>
+                        </div>
+                        <div class="row row__item">
+                            <p class="list__item">
+                                <span class="list__box">
+                                </span>
+                                Potatoes
+                                <span class="list__tooltip">
+                                    ID: 9
+                                </span>
+                            </p>
+                        </div>
+                        <div class="row row__item">
+                            <p class="list__item">
+                                <span class="list__box">
+                                </span>
+                                Onions
+                                <span class="list__tooltip">
+                                    ID: 10
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="list">
+                        <h2 class="list__header">
+                            Aisle: Meat
+                        </h2>
+                        <div class="row item__header">
+                            <p class="small">
+                                Need
+                            </p>
+                            <p class="small">
+                                Done
+                            </p>
+                            <p>
+                                Item
+                            </p>
+                        </div>
+                        <div class="row row__item">
+                            <p class="list__item">
+                                <span class="list__box">
+                                </span>
+                                Chicken
+                                <span class="list__tooltip">
+                                    ID: 16
+                                </span>
+                            </p>
+                        </div>
+                        <div class="row row__item">
+                            <p class="list__item">
+                                <span class="list__box">
+                                </span>
+                                Fish
+                                <span class="list__tooltip">
+                                    ID: 17
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

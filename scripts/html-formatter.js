@@ -53,6 +53,12 @@ const buildHeader = (htmlBuilder) => {
 };
 
 const buildItem = (htmlBuilder, item, listElem) => {
+	const rowElem = htmlBuilder.createElement({
+		tagName: 'div',
+		className: 'row row__item'
+	});
+	listElem.appendChild(rowElem);
+
 	const itemElem = htmlBuilder.createElement({
 		tagName: 'p',
 		className: 'list__item'
@@ -71,7 +77,7 @@ const buildItem = (htmlBuilder, item, listElem) => {
 	itemElem.appendChild(box);
 	itemElem.appendChild(text);
 	itemElem.appendChild(tooltip);
-	listElem.appendChild(itemElem);
+	rowElem.appendChild(itemElem);
 };
 
 const buildRow = (htmlBuilder, aisle, items, rowElem) => {
@@ -93,6 +99,31 @@ const buildRow = (htmlBuilder, aisle, items, rowElem) => {
 		textContent: `Aisle: ${aisle}`
 	});
 	listElem.appendChild(listHeader);
+
+	const headerRow = htmlBuilder.createElement({
+		tagName: 'div',
+		className: 'row item__header'
+	});
+	listElem.appendChild(headerRow);
+
+	const needHeader = htmlBuilder.createElement({
+		tagName: 'p',
+		className: 'small',
+		textContent: 'Need'
+	});
+	const doneHeader = htmlBuilder.createElement({
+		tagName: 'p',
+		className: 'small',
+		textContent: 'Done'
+	});
+	const itemHeader = htmlBuilder.createElement({
+		tagName: 'p',
+		textContent: 'Item'
+	});
+
+	headerRow.appendChild(needHeader);
+	headerRow.appendChild(doneHeader);
+	headerRow.appendChild(itemHeader);
 
 	items.forEach((item) => buildItem(htmlBuilder, item, listElem));
 };
