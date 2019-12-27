@@ -25,5 +25,5 @@ else if (commander.view) {
 	viewData();
 }
 else {
-	throw new Error('Invalid arguments.');
+	throw new Error('Invalid arguments. Run -h for help.');
 }

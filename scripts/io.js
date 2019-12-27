@@ -18,7 +18,8 @@ const outputFilePath = process.env.PROD ? OUTPUT_PATH : DEV_OUTPUT_PATH;
 
 const createBackupFilePath = () => {
 	const timestamp = moment().format('YYYYMMDDHHmmss');
-	return path.resolve(require.main.path, `./backup/list.${timestamp}.json`);
+	const devPrefix = process.env.PROD ? '' : 'dev_';
+	return path.resolve(require.main.path, `./backup/${devPrefix}list.${timestamp}.json`);
 }
 
 const readData = () => {
@@ -30,7 +31,7 @@ const readData = () => {
 };
 
 const writeData = (data) => {
-	if (fs.existsSync(dataFilePath) && process.env.PROD) {
+	if (fs.existsSync(dataFilePath)) {
 		const backupFilePath = createBackupFilePath();
 		fs.copyFileSync(dataFilePath, backupFilePath);
 	}
