@@ -1,8 +1,12 @@
-const { readData } = require('./io');
+const print = require('./print');
+const { execSync } = require('child_process');
+const { paths } = require('./io');
+
+const { outputFilePath } = paths;
 
 const viewData = () => {
-	// TODO need to make sure I'm using dev/prod data accordingly
-	throw new Error('Need to open the browser to display the HTML');
+	print();
+	execSync(`xdg-open ${outputFilePath}`);
 };
 
 module.exports = viewData;
